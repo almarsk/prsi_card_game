@@ -18,7 +18,7 @@ export default class Card {
         let skew = 0 + (i+(hand.length%2/2)-hand.length/2)*PACK_PROPS.width/2    
         hand.length%2
         ? {} 
-        : skew += PACK_PROPS.width/2
+        : skew += PACK_PROPS.width/4
         return (left+skew)+"vmin"
     }
 
