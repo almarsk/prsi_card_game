@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     const pack = new Card(PACK_PROPS)
     pack.add()
     
-    pack.card.style.backgroundColor = "blue"
+    pack.card.style.backgroundColor = "red"
 
     pack.card.addEventListener("mousedown", handlePackage)
     pack.card.addEventListener("touchstart", handlePackage)
