@@ -1,26 +1,40 @@
 import Card from "./card.js"
-import Pack from "./pack.js"
-export const PACK_PROPS = {top: "33.05vmin", left: "47vmin", height: "13.9vmin", width: "10vh"}
-export let hand = 0
+export const PACK_PROPS = {top: 33.05, left: 47, height: 13.9, width: 10}
+export const TABLE_PROPS = {width: 80}
+export let hand = []
+
+//todo      refactor style to css and only attribut class
+//todo      limit rotation - issue -> communication between calculateleft and calculate rotation?
+//todo      opponent card drawing
+//todo      playing cards (incl recalculating positions of cards)
 
 window.addEventListener("DOMContentLoaded", ()=>{
+    const container = document.querySelector('#container')  
+    container.style.width = TABLE_PROPS.width + "vmin"     
 
-    const container = document.querySelector('#container')       
-    const pack = new Pack(PACK_PROPS)
+    const pack = new Card(PACK_PROPS)
     pack.add()
-    pack.pack.addEventListener("mousedown", e=>{
-        const card = new Card(PACK_PROPS)
-        hand++        
-        card.addToHand()
-
-        
-           
-        
-        
-    })
-
     
+    pack.card.style.backgroundColor = "blue"
+
+    pack.card.addEventListener("mousedown", handlePackage)
+    pack.card.addEventListener("touchstart", handlePackage)
+
+    function handlePackage(){
+        const card = new Card(PACK_PROPS)
+        hand.push(card)        
+        card.add()
+        requestAnimationFrame(()=>{
+            hand.forEach((currentCard, index)=>{
+                currentCard.move(currentCard, index)
+            })
+        }) 
+    }
+
  
+
+
+
 
 
 
