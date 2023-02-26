@@ -14,11 +14,21 @@
         }
         #container {
             margin: 10vmin;
-            width: 80vmin;
             height: 80vmin;
             border: 1px solid black;
-            position: relative;
-            
+            position: relative; 
+            transform: rotateX(40deg);  
+        }
+        .card{
+            border: 3px solid orange;
+            transition: left 0.5s ease-in-out, top 0.5s ease-in-out, transform 0.5s ease-in-out;
+            position: absolute;
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+            cursor: pointer;
+            transform: none;
         }
     </style>
 </head>
