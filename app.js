@@ -3,7 +3,7 @@ export const TABLE_PROPS = {width: 80}
 export const PACK_PROPS = {top: 33.05, left: TABLE_PROPS.width*0.55, height: 13.9*0.6, width: 10*0.6}
 export let hand = []
 export let playedCards = []
-const NUMBER_OR_PLAYERS = 2
+const NUMBER_OR_PLAYERS = 2 //do not change for now!!! rotation() in card.js and more will break
 export let player = 0
 let cardsLeft = 32
 
@@ -36,11 +36,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
         hand[player].push(card)        
         card.add()
         card.card.textContent = "zahraj mě"
-        requestAnimationFrame(()=>{
-            hand[player].forEach((currentCard, index)=>{
-                currentCard.move(currentCard, index)
-            })
-        }) 
+        rearrange(player)
         cardsLeft--
         if(!cardsLeft){
             container.removeChild(pack.card)
@@ -52,9 +48,16 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
             const index = hand[card.player].indexOf(card)
             hand[card.player].splice(index,1)
-            console.log("player: "+card.player)
-            console.log(hand[card.player])
+            rearrange(card.player)
         })
+    }
+
+    function rearrange(turn){
+        requestAnimationFrame(()=>{
+            hand[turn].forEach((currentCard, index)=>{
+                currentCard.move(currentCard, index, turn)
+            })
+        }) 
     }
 
  

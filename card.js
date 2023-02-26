@@ -1,4 +1,5 @@
 import { hand, PACK_PROPS, player, TABLE_PROPS } from "./app.js"
+let zindex = 1
 
 export default class Card {
     constructor(PACK_PROPS){
@@ -23,8 +24,8 @@ export default class Card {
         return (left+skew)+"vw"
     }
 
-    calculateRotation(i){
-        const currentHand = hand[player]
+    calculateRotation(i, turn){
+        const currentHand = hand[turn]
         let rotation
         const rotationRate = 15/(currentHand.length/3)
         if (currentHand.length%2 == 1){
@@ -35,7 +36,7 @@ export default class Card {
             rotation = rotationRate +(i-currentHand.length/2)* rotationRate
         }
 
-        if (!player){
+        if (!turn){
             rotation = -rotation + 180
         }
         return "rotate("+rotation+"deg)"
@@ -45,24 +46,25 @@ export default class Card {
         container.append(this.card)                          
     }
 
-    calculateTop(){
-        if(player){
+    calculateTop(turn){
+        if(turn){
             return "60vmin"
         } else {
             return "10vmin"
         }
     }
 
-    move(currentCard, i){    
+    move(currentCard, i, turn){    
         this.card.style.left = this.calculateLeft(i)
-        this.card.style.top = this.calculateTop()
-        this.card.style.transform = this.calculateRotation(i)
+        this.card.style.top = this.calculateTop(turn)
+        this.card.style.transform = this.calculateRotation(i, turn)
     }
 
     play(){
         this.card.style.left = TABLE_PROPS.width*0.45 + "vw"
         this.card.style.top = PACK_PROPS.top + "vmin"
-        
+        zindex++
+        this.card.style.zIndex = zindex
     }
 
 }
