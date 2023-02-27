@@ -65,10 +65,12 @@ export default class Card {
     }
 
     play(){
-        this.card.style.left = TABLE_PROPS.width*0.4 + "vw"
+        this.card.style.left = TABLE_PROPS.width*0.33 + "vw"
         this.card.style.top = PACK_PROPS.top + "vmin"
         zindex++
         this.card.style.zIndex = zindex
+        this.card.style.height = PACK_PROPS.height + "vmin"
+        this.card.style.width = PACK_PROPS.width + "vmin"
         this.card.textContent = "smě zahrál"
     }
 

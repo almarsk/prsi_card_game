@@ -1,7 +1,7 @@
 import Card from "./card.js"
 import { zindex } from "./card.js"
 export const TABLE_PROPS = {width: 80}
-export const PACK_PROPS = {top: 33.05, left: TABLE_PROPS.width*0.55, height: 13.9, width: 10}
+export const PACK_PROPS = {top: 33.05, left: TABLE_PROPS.width*0.6, height: 13.9, width: 10}
 export let hand = []
 export let playingDeck = []
 const NUMBER_OR_PLAYERS = 2 //do not change for now!!! rotation() in card.js and more will break
@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     const container = document.querySelector('#container')  
     container.style.width = TABLE_PROPS.width + "vw"     
     const lid = document.querySelector('#lid')
-    lid.style.width = TABLE_PROPS.width*0.5 + "vw"
+    lid.style.width = (TABLE_PROPS.width*0.54) + "vw"
     const pack = new Card(PACK_PROPS)
     pack.add()
     pack.card.textContent = "lízni si"
