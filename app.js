@@ -7,16 +7,15 @@ export let playingDeck = []
 const NUMBER_OR_PLAYERS = 2 //do not change for now!!! rotation() in card.js and more will break
 export let player = 0
 let cardsLeft = 32
+const startingCards = 16
+
+// TODO hands in arc
+
 
 // create empty player hands
 for (let i=0; i<NUMBER_OR_PLAYERS; i++){
     hand.push([])
 }
-
-//todo      refactor style to css and only attribut class
-//todo      limit rotation - issue -> communication between calculateleft and calculate rotation?
-//todo      opponent card drawing
-//todo      playing cards (incl recalculating positions of cards)
 
 window.addEventListener("DOMContentLoaded", ()=>{
    
@@ -28,8 +27,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     pack.add()
     pack.card.textContent = "lízni si"
 
-    for (let i=0; i<4*NUMBER_OR_PLAYERS;i++){handlePackage()}
-
+    for (let i=0; i<startingCards*NUMBER_OR_PLAYERS;i++){handlePackage()}
     pack.card.addEventListener("mousedown", ()=>{
         pack.card.style.backgroundColor = "rgb(194, 174, 143)"
     })
@@ -61,8 +59,6 @@ window.addEventListener("DOMContentLoaded", ()=>{
         hand[playedCard.player].splice(index,1)
         rearrange(playedCard.player)  
         lid.style.zindex += zindex + 1
-        console.log(lid)
-          
     }
 
     function rearrange(turn){
