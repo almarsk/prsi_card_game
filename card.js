@@ -1,5 +1,5 @@
 import { hand, PACK_PROPS, player, TABLE_PROPS } from "./app.js"
-let zindex = 1
+export let zindex = 1
 
 export default class Card {
     constructor(PACK_PROPS){
@@ -9,7 +9,6 @@ export default class Card {
         this.card.style.width = PACK_PROPS.width + "vmin"
         this.card.style.left = PACK_PROPS.left + "vw"
         this.card.style.top = PACK_PROPS.top + "vmin" 
-        this.card.style.fontSize = "12px"
         this.player = player
     }
 
@@ -60,7 +59,7 @@ export default class Card {
     }
 
     play(){
-        this.card.style.left = TABLE_PROPS.width*0.45 + "vw"
+        this.card.style.left = TABLE_PROPS.width*0.40 + "vw"
         this.card.style.top = PACK_PROPS.top + "vmin"
         zindex++
         this.card.style.zIndex = zindex

@@ -8,20 +8,33 @@
     <title>Prší</title>
     <style>
         body {
+            text-align: center;
             margin:0;
             display: flex;
             justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
         #container {
-            margin: 10vmin;
+            margin: 0 10vmin;
             height: 80vmin;
             border: 1px solid black;
             position: relative; 
             transform: rotateX(20deg);  
         }
+
+        #lid {
+            width: 15vmin;
+            height: 15vmin;
+            background-color: rgba(255, 0, 0, 0);
+            position: absolute;
+            top: 30.05vmin;
+            left: 32vmin;
+            z-index: 100;
+        }
         .card{
             border: 2px solid orange;
-            transition: left 0.5s ease-in-out, top 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transition: left 0.3s ease-in-out, top 0.3s ease-in-out, transform 0.5s ease-in-out;
             position: absolute;
             -webkit-user-select: none; /* Safari */
             -moz-user-select: none; /* Firefox */
@@ -30,10 +43,15 @@
             cursor: pointer;
             transform: none;
             background-color: rgb(255, 231, 194);
+            line-height: 8.34vmin;
+            font-size: 1vw;
         }
     </style>
 </head>
 <body>
-    <div id="container"></div>
+    <div><h1 style="margin: 5vmin">prší mámo</h1></div>
+    <div id="container">
+        <div id="lid"></div>
+    </div>
 </body>
 </html>
