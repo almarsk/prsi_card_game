@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     }
 
     pack.card.addEventListener("mousedown", ()=>{
-        pack.card.style.backgroundColor = "rgb(194, 174, 143)"
+        pack.card.style.backgroundColor = "rgba(255, 231, 194, 0.6)"
     })
     pack.card.addEventListener("mouseup", handlePackage)
     pack.card.addEventListener("touchstart", handlePackage)
