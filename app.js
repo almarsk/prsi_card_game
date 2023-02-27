@@ -7,7 +7,7 @@ export let playingDeck = []
 const NUMBER_OR_PLAYERS = 2 //do not change for now!!! rotation() in card.js and more will break
 export let player = 0
 let cardsLeft = 32
-const startingCards = 16
+const startingCards = 4
 
 // TODO hands in arc
 
@@ -27,7 +27,11 @@ window.addEventListener("DOMContentLoaded", ()=>{
     pack.add()
     pack.card.textContent = "lízni si"
 
-    for (let i=0; i<startingCards*NUMBER_OR_PLAYERS;i++){handlePackage()}
+    for (let i=0; i<startingCards*NUMBER_OR_PLAYERS;i++){
+        setTimeout(handlePackage,300*i)
+        
+    }
+
     pack.card.addEventListener("mousedown", ()=>{
         pack.card.style.backgroundColor = "rgb(194, 174, 143)"
     })

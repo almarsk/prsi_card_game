@@ -16,7 +16,7 @@ export default class Card {
 
     calculateLeft(i, turn){
         const currentHand = hand[turn]
-        let cuddleFactor = 3
+        let cuddleFactor = 2
         hand[turn].length < thresh ? {} : cuddleFactor *= 1 + ((hand[turn].length-thresh)/30)
         let left = (TABLE_PROPS.width/2)-(PACK_PROPS.width/2)
         let skew = 0 + (i+(currentHand.length%2/2)-currentHand.length/2)*PACK_PROPS.width/cuddleFactor    
