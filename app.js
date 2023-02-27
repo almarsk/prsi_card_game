@@ -18,13 +18,12 @@ for (let i=0; i<NUMBER_OR_PLAYERS; i++){
 //todo      opponent card drawing
 //todo      playing cards (incl recalculating positions of cards)
 
-
-
 window.addEventListener("DOMContentLoaded", ()=>{
    
     const container = document.querySelector('#container')  
     container.style.width = TABLE_PROPS.width + "vw"     
     const lid = document.querySelector('#lid')
+    lid.style.width = TABLE_PROPS.width*0.5 + "vw"
     const pack = new Card(PACK_PROPS)
     pack.add()
     pack.card.textContent = "lízni si"

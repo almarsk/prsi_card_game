@@ -59,7 +59,7 @@ export default class Card {
     }
 
     play(){
-        this.card.style.left = TABLE_PROPS.width*0.40 + "vw"
+        this.card.style.left = TABLE_PROPS.width*0.4 + "vw"
         this.card.style.top = PACK_PROPS.top + "vmin"
         zindex++
         this.card.style.zIndex = zindex
