@@ -3,19 +3,18 @@ let zindex = 1
 
 export default class Card {
     constructor(PACK_PROPS){
-        // put in css and just assign class
         this.card = document.createElement("div") 
         this.card.classList.add("card")
         this.card.style.height = PACK_PROPS.height + "vmin"
         this.card.style.width = PACK_PROPS.width + "vmin"
-        this.card.style.left = PACK_PROPS.left + "vW"
+        this.card.style.left = PACK_PROPS.left + "vw"
         this.card.style.top = PACK_PROPS.top + "vmin" 
         this.card.style.fontSize = "12px"
         this.player = player
     }
 
-    calculateLeft(i){
-        const currentHand = hand[player]
+    calculateLeft(i, turn){
+        const currentHand = hand[turn]
         let left = (TABLE_PROPS.width/2)-(PACK_PROPS.width/2)
         let skew = 0 + (i+(currentHand.length%2/2)-currentHand.length/2)*PACK_PROPS.width/1.5    
         currentHand.length%2
@@ -55,7 +54,7 @@ export default class Card {
     }
 
     move(currentCard, i, turn){    
-        this.card.style.left = this.calculateLeft(i)
+        this.card.style.left = this.calculateLeft(i, turn)
         this.card.style.top = this.calculateTop(turn)
         this.card.style.transform = this.calculateRotation(i, turn)
     }
@@ -65,6 +64,7 @@ export default class Card {
         this.card.style.top = PACK_PROPS.top + "vmin"
         zindex++
         this.card.style.zIndex = zindex
+        this.card.textContent = "smě zahrál"
     }
 
 }
