@@ -1,5 +1,6 @@
 import { hand, PACK_PROPS, player, TABLE_PROPS } from "./app.js"
 export let zindex = 1
+const thresh = 8
 
 export default class Card {
     constructor(PACK_PROPS){
@@ -14,11 +15,11 @@ export default class Card {
 
     calculateLeft(i, turn){
         const currentHand = hand[turn]
+        let cuddleFactor = 3
+        hand[turn].length < thresh ? {} : cuddleFactor *= 1 + ((hand[turn].length-thresh)/14)
         let left = (TABLE_PROPS.width/2)-(PACK_PROPS.width/2)
-        let skew = 0 + (i+(currentHand.length%2/2)-currentHand.length/2)*PACK_PROPS.width/1.5    
-        currentHand.length%2
-        ? {} 
-        : skew += PACK_PROPS.width/4
+        let skew = 0 + (i+(currentHand.length%2/2)-currentHand.length/2)*PACK_PROPS.width/cuddleFactor    
+        currentHand.length% 2 ? {} : skew += PACK_PROPS.width/4
         return (left+skew)+"vw"
     }
 
@@ -52,10 +53,15 @@ export default class Card {
         }
     }
 
-    move(currentCard, i, turn){    
+    move(currentCard, i, turn){
+            
         this.card.style.left = this.calculateLeft(i, turn)
         this.card.style.top = this.calculateTop(turn)
         this.card.style.transform = this.calculateRotation(i, turn)
+        if (hand[turn].length > thresh){
+            this.card.style.height = PACK_PROPS.height*(1-((hand[turn].length-thresh)/20)) + "vmin"
+            this.card.style.width = PACK_PROPS.width*(1-((hand[turn].length-thresh)/20)) + "vmin"
+        }
     }
 
     play(){
